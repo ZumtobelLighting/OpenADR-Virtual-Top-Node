@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '~> 3.2'
 
-gem 'bcrypt-ruby', '3.0.1'
+gem 'bcrypt', '~> 3.0'
 
 gem 'warbler', '1.4.0.beta1'
 
@@ -13,8 +13,8 @@ gem 'httpclient', '~> 2.3.4.1'
 gem 'json-schema'
 
 group :development do
-  gem 'torquebox', '~> 3.0.2'
-  gem 'torquebox-server', '~> 3.0.2'
+  # gem 'torquebox', '~> 3.0.2'
+  # gem 'torquebox-server', '~> 3.0.2'
 
   gem 'annotate', '2.5.0'
 
