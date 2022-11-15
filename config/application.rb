@@ -211,6 +211,7 @@ module Oadr
     # config.autoload_paths += %W(#{config.root}/extras)
 
     #config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root})
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.autoload_paths += %W(#{config.root}/app/models/targets)
 

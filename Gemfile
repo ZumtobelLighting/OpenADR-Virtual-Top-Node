@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 3.2'
 
-gem 'bcrypt', '~> 3.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'warbler', '1.4.0.beta1'
 
@@ -10,7 +10,9 @@ gem 'warbler', '1.4.0.beta1'
 
 gem 'httpclient', '~> 2.3.4.1'
 
-gem 'json-schema'
+gem 'json-schema', '~> 2.6.2'
+
+gem 'nokogiri', '1.6.5'
 
 group :development do
   # gem 'torquebox', '~> 3.0.2'
@@ -32,7 +34,7 @@ gem 'jdbc-postgresql', '9.2.1000'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'bourbon'
+  gem 'bourbon',      '~> 3.1.8'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
@@ -40,11 +42,11 @@ group :assets do
   gem 'therubyrhino', '2.0.2'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '~> 3.1.1'
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '~> 2.4.4'
 end
 
 group :development, :test do
@@ -68,7 +70,7 @@ end
 gem 'jquery-rails', '3.0.4'
 gem 'jquery-ui-rails', '4.0.3'
 
-gem 'time_difference'
+gem 'time_difference', '~> 0.4.2'
 
 # Load local gems based on their existence in a known local directory
 local_gems_directory = File.dirname(__FILE__) + '/../local_oadr_gems/' # Set to empty string ('') if not replacing with valid directory
