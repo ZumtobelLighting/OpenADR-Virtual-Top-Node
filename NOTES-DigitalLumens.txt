@@ -1,4 +1,29 @@
-export RAILS_ENV=production
+Getting the EPRI OpenADR VTN test server running on the latest MacOS
+13 (Ventura)
+
+----------
+
+Note on component versions:
+
+Upgrading from Rails 3.2.12 to 3.2.22 did not work due to a problem
+with the ActiveRecord pluck() method (Array.columns method not found),
+so sticking with 3.2.12.
+
+jruby 1.7 no longer works - its OpenSSL is too out of date to
+connect to rubygems.org. And the latest jruby 9.3 is not compatible
+with the old Rails 3.2. Fortunately jruby 9.1 seems to work.
+
+We need to specifically use bundler version 1.17.3, the version 2
+bundler is not compatible.
+
+torquebox is no longer supported and I couldn't easily get the old
+version running. We don't need it, we're just running the server
+directly on localhost. But if we need a full-blown server then
+Phusion Passenger is probably the right choice.
+
+----------
+
+Install XCode and command line tools
 
 Install rvm
 
@@ -28,6 +53,8 @@ production:
   port: 54320
 
 rvm install jruby-9.1
+
+export RAILS_ENV=production
 
 gem install bundler:1.17.3
 bundle _1.17.3_ install

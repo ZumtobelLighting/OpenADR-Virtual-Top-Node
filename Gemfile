@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2'
+gem 'rails', '3.2.12'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -13,6 +13,8 @@ gem 'httpclient', '~> 2.3.4.1'
 gem 'json-schema', '~> 2.6.2'
 
 gem 'nokogiri', '1.6.5'
+
+gem 'rake', '~> 10.1.0'
 
 group :development do
   # gem 'torquebox', '~> 3.0.2'
@@ -51,7 +53,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner'
   gem 'spork-testunit'
   gem 'spork', '~> 1.0rc'
