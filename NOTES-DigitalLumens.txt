@@ -5,13 +5,14 @@ Getting the EPRI OpenADR VTN test server running on the latest MacOS
 
 Note on component versions:
 
-Upgrading from Rails 3.2.12 to 3.2.22 did not work due to a problem
-with the ActiveRecord pluck() method (Array.columns method not found),
-so sticking with 3.2.12.
-
 jruby 1.7 no longer works - its OpenSSL is too out of date to
 connect to rubygems.org. And the latest jruby 9.3 is not compatible
 with the old Rails 3.2. Fortunately jruby 9.1 seems to work.
+
+Rails 3.2.12 was having some issues with jruby 9.1, and the most recent
+version, 3.2.22.5, seems to behave better. But ActiveRecord 3.2.22.5
+was having a problem with the pluck() method and we monkey-patched it
+to use the 3.2.12 implementation... See config/initializers/patches.rb.
 
 We need to specifically use bundler version 1.17.3, the version 2
 bundler is not compatible.
@@ -29,17 +30,17 @@ Install rvm
 
 Install java (1.8.0)
 
-Need an older version of Postgres (versions 12+ incompatible with this
+Need an older version of Postgres (versions >= 10 incompatible with this
 version of ActiveRecord):
 
-mkdir -p $HOME/docker/volumes/postgres10
-docker run --name postgres10 \
-    -p 54320:5432 \
-    -v $HOME/docker/volumes/postgres10:/var/lib/postgresql/data \
+mkdir -p $HOME/docker/volumes/postgres9.6
+docker run --name postgres9.6 \
+    -p 54321:5432 \
+    -v $HOME/docker/volumes/postgres9.6:/var/lib/postgresql/data \
     -e POSTGRES_PASSWORD=postgres \
     -e POSTGRES_USER=postgres \
     -e PG_TRUST_LOCALNET=true \
-    -d postgres:10-alpine
+    -d postgres:9.6
 
 Copy config/database.yml.example -> config/database.yml
 Update production section:
@@ -50,7 +51,7 @@ production:
   username: postgres
   password: postgres
   host: localhost
-  port: 54320
+  port: 54321
 
 rvm install jruby-9.1
 
