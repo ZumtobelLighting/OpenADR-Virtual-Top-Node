@@ -3,6 +3,18 @@ Getting the EPRI OpenADR VTN test server running on the latest MacOS
 
 ----------
 
+Quickstart section using docker-compose - see below sections for the details on versions
+
+Run:
+
+docker network create dl
+docker-compose up
+
+It will expose the application on localhost:3000 and postgres on localhost:54321. Data will persist as long as you don't
+run "docker-compose down" or manually delete containers.
+
+----------
+
 Note on component versions:
 
 jruby 1.7 no longer works - its OpenSSL is too out of date to

@@ -1,0 +1,29 @@
+networks:
+  dl:
+    external: true
+    name: dl
+
+services:
+  adrpostgres:
+    image: postgres:9.6
+    container_name: adrpostgres
+    ports:
+      - 54321:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=epri_oadr
+    networks:
+      - dl
+
+  openadrtop:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: openadrtop
+    depends_on:
+      - adrpostgres
+    ports:
+      - 3000:3000
+    networks:
+      - dl
